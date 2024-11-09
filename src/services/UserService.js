@@ -1,11 +1,9 @@
-import axios from 'axios';
-
-import { API_BASE_URL } from '@/config';
+import urbanGreenAxios from './UrbanGreenAxios';
 
 class AuthService {
   static async login(username, password) {
     try {
-      const response = await axios.post(`${API_BASE_URL}/Login`, {
+      const response = await urbanGreenAxios.post('/Login', {
         nomeUsuario: username,
         senha: password,
       });
