@@ -13,11 +13,14 @@
 </template>
 
 <script>
+import AuthService from '@/services/UserService';
+
 export default {
   name: 'AppHeader',
   methods: {
     logout() {
-      console.log('Logout realizado!');
+      AuthService.logout();
+      this.$router.push({ name: 'Login' });
     },
   },
 };

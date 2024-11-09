@@ -1,8 +1,16 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import AppHome from '@/views/AppHome.vue';
 import Orders from '@/views/OrdersPage.vue';
+import LoginPage from '@/views/LoginPage.vue';
+import AuthService from '@/services/UserService';
 
 const routes = [
+  {
+    path: '/login',
+    name: 'Login',
+    component: LoginPage,
+    meta: { layout: 'LoginLayout' },
+  },
   {
     path: '/home',
     name: 'Home',
@@ -20,6 +28,16 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
+});
+
+router.beforeEach((to, from, next) => {
+  const isAuthenticated = AuthService.isAuthenticated();
+
+  if (to.name !== 'Login' && !isAuthenticated) {
+    next({ name: 'Login' });
+  } else {
+    next();
+  }
 });
 
 export default router;
