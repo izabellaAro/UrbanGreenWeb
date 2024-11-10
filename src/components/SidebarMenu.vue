@@ -2,8 +2,8 @@
   <div class="sidebar">
     <div class="profile-card">
       <div class="profile-info">
-        <h3 class="profile-name">Nome do Usuário</h3>
-        <p class="profile-role">Cargo</p>
+        <h3 class="profile-name">{{ userStore.currentUser.nome }}</h3>
+        <p class="profile-role">{{ userStore.currentUser.role }}</p>
       </div>
     </div>
 
@@ -25,9 +25,23 @@
 </template>
 
 <script>
+import { useUserStore } from '@/store/UserStore';
+import { useRouter } from 'vue-router';
+
 export default {
   name: 'SidebarMenu',
-  data() {
+  setup() {
+    const userStore = useUserStore();
+    const router = useRouter();
+
+    const isActiveRoute = (route) => {
+      return router.path === route;
+    };
+
+    const navigateTo = (route) => {
+      router.push(route);
+    };
+
     return {
       selectedIndex: null,
       onHoldIndex: null,
@@ -36,15 +50,10 @@ export default {
         { text: 'Funcionários', icon: 'fa-solid fa-user', route: '/employees' },
         { text: 'Pedidos', icon: 'fa-solid fa-file', route: '/orders' },
       ],
+      isActiveRoute,
+      navigateTo,
+      userStore,
     };
-  },
-  methods: {
-    isActiveRoute(route) {
-      return this.$route.path === route;
-    },
-    navigateTo(route) {
-      this.$router.push(route);
-    },
   },
 };
 </script>

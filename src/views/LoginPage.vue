@@ -31,6 +31,7 @@
 <script>
 import LoginLayout from '@/layouts/LoginLayout.vue';
 import UserService from '@/services/UserService';
+import { useUserStore } from '@/store/UserStore';
 
 export default {
   name: 'LoginPage',
@@ -50,8 +51,10 @@ export default {
         return;
       }
 
+      const userStore = useUserStore();
       UserService.login(this.username, this.password)
-        .then(() => {
+        .then((data) => {
+          userStore.setLoginInfo(data.token, data.userInfo);
           this.$router.push({ name: 'Orders' });
         })
         .catch((error) => {
