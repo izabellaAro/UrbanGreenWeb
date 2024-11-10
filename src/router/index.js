@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import AppHome from '@/views/AppHome.vue';
 import Orders from '@/views/OrdersPage.vue';
 import LoginPage from '@/views/LoginPage.vue';
 import AuthService from '@/services/UserService';
@@ -13,10 +12,8 @@ const routes = [
     meta: { layout: 'LoginLayout' },
   },
   {
-    path: '/home',
-    name: 'Home',
-    component: AppHome,
-    meta: { layout: 'DefaultLayout' },
+    path: '/',
+    redirect: '/orders',
   },
   {
     path: '/orders',
