@@ -26,16 +26,17 @@
 
 <script>
 import { useUserStore } from '@/store/UserStore';
-import { useRouter } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 
 export default {
   name: 'SidebarMenu',
   setup() {
     const userStore = useUserStore();
     const router = useRouter();
+    const route = useRoute();
 
-    const isActiveRoute = (route) => {
-      return router.path === route;
+    const isActiveRoute = (path) => {
+      return route.path === path;
     };
 
     const navigateTo = (route) => {
@@ -46,7 +47,6 @@ export default {
       selectedIndex: null,
       onHoldIndex: null,
       menuItems: [
-        { text: 'Início', icon: 'fa-solid fa-house', route: '/' },
         { text: 'Funcionários', icon: 'fa-solid fa-user', route: '/employees' },
         { text: 'Pedidos', icon: 'fa-solid fa-file', route: '/orders' },
       ],
@@ -63,7 +63,6 @@ export default {
   border-radius: var(--border-radius);
   background-color: white;
   height: 70vh;
-  padding-top: 1vh;
 }
 
 .profile-card {

@@ -17,7 +17,7 @@
 <script>
 import OrderCard from '@/components/OrderCard.vue';
 import OrderService from '@/services/OrderService';
-import PageHeader from '@/components/PageHeader.vue';
+import PageHeader from '@/components/shared/PageHeader.vue';
 import DefaultLayout from '@/layouts/DefaultLayout.vue';
 
 export default {

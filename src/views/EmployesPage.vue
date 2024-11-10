@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import PageHeader from '@/components/PageHeader.vue';
+import PageHeader from '@/components/shared/PageHeader.vue';
 import EmployeeCard from '@/components/EmployeeCard.vue';
 import UserService from '@/services/UserService';
 import DefaultLayout from '@/layouts/DefaultLayout.vue';

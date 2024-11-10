@@ -17,8 +17,8 @@
 </template>
 
 <script>
-import AppHeader from '@/components/AppHeader.vue';
-import SidebarMenu from '@/components/SidebarMenu.vue';
+import AppHeader from '@/components/shared/AppHeader.vue';
+import SidebarMenu from '@/components/shared/SidebarMenu.vue';
 
 export default {
   name: 'DefaultLayout',
