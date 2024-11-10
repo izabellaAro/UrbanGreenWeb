@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import AuthService from '@/services/UserService';
+import UserService from '@/services/UserService';
 
 export default {
   name: 'LoginPage',
@@ -44,7 +44,7 @@ export default {
         return;
       }
 
-      AuthService.login(this.username, this.password)
+      UserService.login(this.username, this.password)
         .then(() => {
           this.$router.push({ name: 'Orders' });
         })

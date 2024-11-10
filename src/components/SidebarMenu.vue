@@ -33,10 +33,7 @@ export default {
       onHoldIndex: null,
       menuItems: [
         { text: 'Início', icon: 'fa-solid fa-house', route: '/' },
-        { text: 'Fornecedores', icon: 'fa-solid fa-user', route: '/' },
-        { text: 'Estoque', icon: 'fa-solid fa-box', route: '/' },
-        { text: 'Produção', icon: 'fa-solid fa-plant-wilt', route: '/' },
-        { text: 'Vendas', icon: 'fa-solid fa-bag-shopping', route: '/' },
+        { text: 'Funcionários', icon: 'fa-solid fa-user', route: '/employees' },
         { text: 'Pedidos', icon: 'fa-solid fa-file', route: '/orders' },
       ],
     };

@@ -1,6 +1,6 @@
 import urbanGreenAxios from './UrbanGreenAxios';
 
-class AuthService {
+class UserService {
   static async login(username, password) {
     try {
       const response = await urbanGreenAxios.post('/Login', {
@@ -26,6 +26,16 @@ class AuthService {
   static isAuthenticated() {
     return !!localStorage.getItem('authToken');
   }
+
+  static async fetchUsers() {
+    try {
+      const response = await urbanGreenAxios.get('/Login/usuarios');
+      return response.data;
+    } catch (error) {
+      console.error('Erro ao buscar usuarios:', error);
+      throw error;
+    }
+  }
 }
 
-export default AuthService;
+export default UserService;

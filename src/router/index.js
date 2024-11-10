@@ -3,6 +3,7 @@ import AppHome from '@/views/AppHome.vue';
 import Orders from '@/views/OrdersPage.vue';
 import LoginPage from '@/views/LoginPage.vue';
 import AuthService from '@/services/UserService';
+import EmployesPage from '@/views/EmployesPage.vue';
 
 const routes = [
   {
@@ -21,6 +22,12 @@ const routes = [
     path: '/orders',
     name: 'Orders',
     component: Orders,
+    meta: { layout: 'DefaultLayout' },
+  },
+  {
+    path: '/employees',
+    name: 'Employes',
+    component: EmployesPage,
     meta: { layout: 'DefaultLayout' },
   },
 ];
