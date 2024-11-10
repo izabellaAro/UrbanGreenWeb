@@ -1,7 +1,13 @@
 <template>
   <DefaultLayout>
     <div class="employees-view">
-      <PageHeader :title="'Funcionários'"></PageHeader>
+      <PageHeader :title="'Funcionários'" @add="openModal"></PageHeader>
+
+      <EmployeeFormModal
+        v-if="isModalOpen"
+        @close="closeModal()"
+        @submit="handleAddEmployee"
+      />
 
       <div class="employees">
         <EmployeeCard
@@ -19,6 +25,8 @@ import PageHeader from '@/components/PageHeader.vue';
 import EmployeeCard from '@/components/EmployeeCard.vue';
 import UserService from '@/services/UserService';
 import DefaultLayout from '@/layouts/DefaultLayout.vue';
+import EmployeeFormModal from '@/components/EmployeeFormModal.vue';
+import { ref, onMounted } from 'vue';
 
 export default {
   name: 'EmployeesPage',
@@ -26,24 +34,47 @@ export default {
     PageHeader,
     EmployeeCard,
     DefaultLayout,
-  },
-  data() {
-    return {
-      employees: [],
-    };
+    EmployeeFormModal,
   },
 
-  async created() {
-    await this.loadEmployees();
-  },
-  methods: {
-    async loadEmployees() {
-      try {
-        this.employees = await UserService.fetchUsers();
-      } catch (error) {
-        console.error('Erro ao carregar usuarios: ', error);
-      }
-    },
+  setup() {
+    const employees = ref(null);
+    const isModalOpen = ref(false);
+
+    const getUsers = async () => {
+      employees.value = await UserService.fetchUsers();
+    };
+
+    const openModal = () => {
+      isModalOpen.value = true;
+    };
+
+    const closeModal = () => {
+      isModalOpen.value = false;
+    };
+
+    const handleAddEmployee = async (employeeData) => {
+      const request = {
+        nomeUsuario: employeeData.name,
+        email: employeeData.email,
+        role: employeeData.role,
+        senha: employeeData.password,
+      };
+
+      await UserService.registerUser(request);
+      closeModal();
+      await getUsers();
+    };
+
+    onMounted(getUsers);
+
+    return {
+      employees,
+      isModalOpen,
+      openModal,
+      closeModal,
+      handleAddEmployee,
+    };
   },
 };
 </script>

@@ -55,6 +55,19 @@ class UserService {
       throw error;
     }
   }
+
+  static async registerUser(payload) {
+    try {
+      await urbanGreenAxios.post('/Login/Registro', payload, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+    } catch (error) {
+      console.error('Erro ao cadastrar usuario:', error);
+      throw error;
+    }
+  }
 }
 
 export default UserService;

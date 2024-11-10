@@ -10,7 +10,7 @@
         <i class="search-icon fa-solid fa-magnifying-glass"></i>
       </div>
 
-      <i class="more-icon fa-solid fa-plus"></i>
+      <i class="more-icon fa-solid fa-plus" @click="$emit('add')"></i>
     </div>
   </div>
 </template>
