@@ -22,6 +22,10 @@ class UserService {
 
       const userInfoResponse = await this.userInfo();
 
+      if (tokenResponse.data.token) {
+        localStorage.setItem('userInfo', JSON.stringify(userInfoResponse));
+      }
+
       return {
         token: tokenResponse.data,
         userInfo: userInfoResponse,

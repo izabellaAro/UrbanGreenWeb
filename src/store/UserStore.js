@@ -2,8 +2,8 @@ import { defineStore } from 'pinia';
 
 export const useUserStore = defineStore('user', {
   state: () => ({
-    token: null,
-    user: null,
+    token: localStorage.getItem('authToken') || null,
+    user: JSON.parse(localStorage.getItem('userInfo')) || null,
   }),
   actions: {
     logout() {
