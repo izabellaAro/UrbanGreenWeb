@@ -1,18 +1,12 @@
 <template>
   <div id="login-layout">
-    <!-- <slot /> -->
-    <LoginPage></LoginPage>
+    <slot />
   </div>
 </template>
 
 <script>
-import LoginPage from '@/views/LoginPage.vue';
-
 export default {
   name: 'LoginLayout',
-  components: {
-    LoginPage,
-  },
 };
 </script>
 

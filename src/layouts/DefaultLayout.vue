@@ -10,8 +10,7 @@
       </div>
 
       <div class="content">
-        <!-- <slot /> -->
-        <OrdersPage></OrdersPage>
+        <slot />
       </div>
     </div>
   </div>
@@ -20,14 +19,12 @@
 <script>
 import AppHeader from '@/components/AppHeader.vue';
 import SidebarMenu from '@/components/SidebarMenu.vue';
-import OrdersPage from '@/views/OrdersPage.vue';
 
 export default {
   name: 'DefaultLayout',
   components: {
     AppHeader,
     SidebarMenu,
-    OrdersPage,
   },
 };
 </script>

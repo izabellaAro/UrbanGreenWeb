@@ -1,23 +1,31 @@
 <template>
-  <div class="pedido-view">
-    <PageHeader :title="'Pedidos'" :addFinder="true"></PageHeader>
+  <DefaultLayout>
+    <div class="pedido-view">
+      <PageHeader :title="'Pedidos'" :addFinder="true"></PageHeader>
 
-    <div class="orders">
-      <OrderCard v-for="(order, index) in orders" :key="index" :order="order" />
+      <div class="orders">
+        <OrderCard
+          v-for="(order, index) in orders"
+          :key="index"
+          :order="order"
+        />
+      </div>
     </div>
-  </div>
+  </DefaultLayout>
 </template>
 
 <script>
 import OrderCard from '@/components/OrderCard.vue';
 import OrderService from '@/services/OrderService';
 import PageHeader from '@/components/PageHeader.vue';
+import DefaultLayout from '@/layouts/DefaultLayout.vue';
 
 export default {
   name: 'OrdersPage',
   components: {
     OrderCard,
     PageHeader,
+    DefaultLayout,
   },
   data() {
     return {

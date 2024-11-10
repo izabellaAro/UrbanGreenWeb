@@ -1,27 +1,31 @@
 <template>
-  <div class="employees-view">
-    <PageHeader :title="'Funcionários'"></PageHeader>
+  <DefaultLayout>
+    <div class="employees-view">
+      <PageHeader :title="'Funcionários'"></PageHeader>
 
-    <div class="employees">
-      <EmployeeCard
-        v-for="employee in employees"
-        :key="employee.id"
-        :employee="employee"
-      />
+      <div class="employees">
+        <EmployeeCard
+          v-for="employee in employees"
+          :key="employee.id"
+          :employee="employee"
+        />
+      </div>
     </div>
-  </div>
+  </DefaultLayout>
 </template>
 
 <script>
 import PageHeader from '@/components/PageHeader.vue';
 import EmployeeCard from '@/components/EmployeeCard.vue';
 import UserService from '@/services/UserService';
+import DefaultLayout from '@/layouts/DefaultLayout.vue';
 
 export default {
   name: 'EmployeesPage',
   components: {
     PageHeader,
     EmployeeCard,
+    DefaultLayout,
   },
   data() {
     return {

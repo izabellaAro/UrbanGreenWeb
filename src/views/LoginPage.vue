@@ -1,36 +1,42 @@
 <template>
-  <div class="login-page">
-    <div class="login-card">
-      <div class="login-card-left">
-        <img src="@/assets/logo.png" alt="Login Image" class="login-image" />
-      </div>
+  <LoginLayout>
+    <div class="login-page">
+      <div class="login-card">
+        <div class="login-card-left">
+          <img src="@/assets/logo.png" alt="Login Image" class="login-image" />
+        </div>
 
-      <div class="login-card-right">
-        <h2 class="login-title">Login</h2>
-        <input
-          type="text"
-          placeholder="Usuário"
-          class="login-input"
-          v-model="username"
-        />
-        <input
-          type="password"
-          placeholder="Senha"
-          class="login-input"
-          @keydown.enter="handleLogin()"
-          v-model="password"
-        />
-        <button class="login-button" @click="handleLogin()">Entrar</button>
+        <div class="login-card-right">
+          <h2 class="login-title">Login</h2>
+          <input
+            type="text"
+            placeholder="Usuário"
+            class="login-input"
+            v-model="username"
+          />
+          <input
+            type="password"
+            placeholder="Senha"
+            class="login-input"
+            @keydown.enter="handleLogin()"
+            v-model="password"
+          />
+          <button class="login-button" @click="handleLogin()">Entrar</button>
+        </div>
       </div>
     </div>
-  </div>
+  </LoginLayout>
 </template>
 
 <script>
+import LoginLayout from '@/layouts/LoginLayout.vue';
 import UserService from '@/services/UserService';
 
 export default {
   name: 'LoginPage',
+  components: {
+    LoginLayout,
+  },
   data() {
     return {
       username: '',
